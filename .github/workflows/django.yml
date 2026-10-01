@@ -1,5 +1,6 @@
 name: Django checks
-on: [push]
+on: [push, pull_request]
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,3 +13,4 @@ jobs:
       - run: python manage.py check
       - run: python manage.py migrate --noinput
       - run: python manage.py seed_shop
+      - run: python manage.py test
