@@ -1,1 +1,8 @@
-{% extends "base.html" %}{% block title %}About | The Gents' Corner{% endblock %}{% block content %}<main><section class="page"><span class="eyebrow">OUR STORY</span><h1>The corner for<br><em>good company.</em></h1><p>We built The Gents' Corner around a simple idea: great barbering should feel personal, unhurried and consistently sharp.</p></section><section class="section split"><div><span class="eyebrow">OUR BARBERS</span><h2>Craft is<br>in the details.</h2></div><div>{% for b in barbers %}<article class="barber"><span class="avatar">{{b.name|slice:":1"}}</span><div><h3>{{b.name}}</h3><small>{{b.role}}</small><p>{{b.bio}}</p></div></article>{% endfor %}</div></section></main>{% endblock %}
+{% extends "base.html" %}
+{% block title %}About | The Gents' Corner{% endblock %}
+{% block content %}
+<main>
+<section class="about-hero"><div><span class="eyebrow">OUR STORY</span><h1>The corner for<br><em>good company.</em></h1><p>We built The Gents' Corner around a simple idea: great barbering should feel personal, unhurried and consistently sharp.</p></div><div class="about-image"></div></section>
+<section class="section split"><div><span class="eyebrow">OUR BARBERS</span><h2>Craft is<br>in the details.</h2><a class="link" href="{% url 'barbers' %}">Meet the full team →</a></div><div>{% for b in barbers %}<article class="barber"><div class="mini-barber-photo"{% if b.image_url %} style="background-image:url('{{ b.image_url }}')"{% endif %}></div><div><h3>{{b.name}}</h3><small>{{b.role}}</small><p>{{b.bio}}</p></div></article>{% endfor %}</div></section>
+</main>
+{% endblock %}
