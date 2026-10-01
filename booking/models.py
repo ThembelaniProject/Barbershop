@@ -40,6 +40,12 @@ class Booking(models.Model):
 
     class Meta:
         ordering = ["appointment_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["barber", "appointment_at"],
+                name="unique_barber_slot",
+            )
+        ]
 
     def clean(self):
         if self.appointment_at.weekday() == 6:
