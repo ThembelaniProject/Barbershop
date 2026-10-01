@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Barbers | The Gents' Corner{% endblock %}
+{% block content %}
+<main>
+<section class="page"><span class="eyebrow">THE TEAM</span><h1>Meet the<br><em>barbers.</em></h1><p>Experienced hands, personal service and a finish built around your style.</p></section>
+<section class="barber-showcase"><div class="barber-grid">{% for b in barbers %}<article class="barber-card"><div class="barber-photo"{% if b.image_url %} style="background-image:url('{{ b.image_url }}')"{% endif %}></div><div class="barber-card-body"><span class="eyebrow">{{b.role}}</span><h3>{{b.name}}</h3><p>{{b.bio}}</p><a class="btn small" href="{% url 'book' %}">Book with {{b.name }} →</a></div></article>{% empty %}<p>No active barbers are available yet.</p>{% endfor %}</div></section>
+</main>
+{% endblock %}
