@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title>The Gents' Corner Barber Co. logo</title><desc>Gold circular monogram logo with the letters GC and a barber pole inspired stripe.</desc>
+<circle cx="256" cy="256" r="238" fill="#211f1b" stroke="#b58a48" stroke-width="10"/>
+<circle cx="256" cy="256" r="202" fill="none" stroke="#b58a48" stroke-width="2"/>
+<path d="M166 340c50-40 91-73 180-168" fill="none" stroke="#b58a48" stroke-width="12" stroke-linecap="round"/>
+<path d="M346 340c-50-40-91-73-180-168" fill="none" stroke="#f2eee6" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+<text x="256" y="292" text-anchor="middle" fill="#fffdf8" font-family="Georgia,serif" font-size="128" font-weight="700" letter-spacing="-8">GC</text>
+<text x="256" y="370" text-anchor="middle" fill="#b58a48" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="8">THE GENTS' CORNER</text>
+</svg>
