@@ -1,0 +1,1 @@
+function toggleMenu(){document.getElementById("nav").classList.toggle("open")}function closeOffer(){document.getElementById("offer").remove()}setTimeout(()=>{const x=document.getElementById("offer");if(x)x.classList.add("show")},600);
