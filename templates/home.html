@@ -3,7 +3,6 @@
 <main>
 <section class="hero">
 <div class="hero-copy"><span class="eyebrow">DURBAN · EST. 2026</span><h1>Sharp cuts.<br><em>Strong presence.</em></h1><p>A modern neighbourhood barbershop built around precision, conversation and a proper finish.</p><div class="actions"><a class="btn" href="{% url 'book' %}">Book your chair →</a><a class="link" href="{% url 'services' %}">View services</a></div></div>
-<div class="hero-art"><div class="hero-overlay"></div><div class="hero-art-content"><span>✂</span><strong>Walk out<br>different.</strong></div></div>
 </section>
 <section class="darkbar"><div>01 · Precision craft</div><div>02 · Premium products</div><div>03 · Easy booking</div></section>
 <section class="section"><div class="head"><div><span class="eyebrow">THE MENU</span><h2>Services made<br>for your style.</h2></div><a class="link" href="{% url 'services' %}">See all →</a></div><div class="cards">{% for s in services %}<article class="card"><span class="number">0{{forloop.counter}}</span><h3>{{s.name}}</h3><p>{{s.description}}</p><div class="price"><b>R{{s.price}}</b><span>{{s.duration_minutes}} min</span></div></article>{% empty %}<p>No services are available yet.</p>{% endfor %}</div></section>
