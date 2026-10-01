@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django import forms
 from django.utils import timezone
 
@@ -39,7 +41,7 @@ class BookingForm(forms.ModelForm):
         service = self.cleaned_data.get("service")
         if barber and service:
             requested_start = value
-            requested_end = value + timezone.timedelta(minutes=service.duration_minutes)
+            requested_end = value + timedelta(minutes=service.duration_minutes)
             existing = Booking.objects.filter(
                 barber=barber,
                 status="confirmed",
