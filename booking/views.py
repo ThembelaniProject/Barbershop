@@ -74,8 +74,16 @@ def google_url(booking):
 
 
 def _ics_escape(value):
-    return str(value).replace("\", "\\").replace(";", "\;").replace(",", "\,").replace("
-", "\n")
+    """Escape text according to RFC 5545 iCalendar text rules."""
+    return (
+        str(value)
+        .replace("\\", "\\\\")
+        .replace(";", "\\;")
+        .replace(",", "\\,")
+        .replace("\r\n", "\\n")
+        .replace("\n", "\\n")
+        .replace("\r", "\\n")
+    )
 
 
 def calendar_ics(request, booking_id):
