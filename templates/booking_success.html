@@ -1,1 +1,28 @@
-{% extends "base.html" %}{% block title %}Confirmed | The Gents' Corner{% endblock %}{% block content %}<main><section class="success"><span class="success-icon">✓</span><span class="eyebrow">YOU'RE BOOKED</span><h1>See you in the<br><em>chair.</em></h1><p>Your appointment with {{booking.barber.name}} is confirmed.</p><div class="confirmation"><div><small>Service</small><b>{{booking.service.name}}</b></div><div><small>Date & time</small><b>{{booking.appointment_at|date:"l, d F Y · H:i"}}</b></div><div><small>Guest</small><b>{{booking.customer_name}}</b></div></div><div class="actions center"><a class="btn" href="{{google_url}}" target="_blank">Add to Google Calendar</a><a class="btn outline" href="{% url 'calendar_ics' booking.id %}">Download calendar event</a></div><p class="muted">The .ics event works with Apple Calendar and compatible calendar apps.</p></section></main>{% endblock %}
+{% extends "base.html" %}
+{% block title %}Booking Confirmed | The Gents' Corner{% endblock %}
+{% block content %}
+<main>
+<section class="success" aria-labelledby="confirmation-title">
+    <span class="success-icon" aria-hidden="true">✓</span>
+    <span class="eyebrow">YOU'RE BOOKED</span>
+    <h1 id="confirmation-title">See you in the<br><em>chair.</em></h1>
+    <p>Your appointment with {{booking.barber.name}} is confirmed.</p>
+
+    <div class="confirmation">
+        <div><small>Service</small><b>{{booking.service.name}}</b></div>
+        <div><small>Barber</small><b>{{booking.barber.name}}</b></div>
+        <div><small>Date & time</small><b>{{booking.appointment_at|date:"l, d F Y · H:i"}}</b></div>
+        <div><small>Guest</small><b>{{booking.customer_name}}</b></div>
+        <div><small>Duration</small><b>{{booking.service.duration_minutes}} minutes</b></div>
+        <div><small>Location</small><b>Morningside, Durban</b></div>
+    </div>
+
+    <div class="actions center">
+        <a class="btn" href="{{google_url}}" target="_blank" rel="noopener noreferrer">Add to Google Calendar</a>
+        <a class="btn outline" href="{% url 'calendar_ics' booking.id %}">Add to Apple Calendar</a>
+    </div>
+    <p class="muted">The Apple Calendar button downloads a standard .ics event containing your selected service, barber, date, start time, end time and location.</p>
+    <p><a class="link" href="{% url 'home' %}">Return to homepage →</a></p>
+</section>
+</main>
+{% endblock %}
