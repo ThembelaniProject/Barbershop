@@ -1,1 +1,30 @@
-{% load static %}<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}The Gents' Corner{% endblock %}</title><meta name="description" content="Premium barbering in Durban. Book your next cut."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="{% static 'css/site.css' %}"></head><body><div id="offer" class="offer">New guests get 10% off their first booking. <button onclick="closeOffer()">×</button></div><header><a class="brand" href="{% url 'home' %}"><b>GC</b><span>THE GENTS'<small>CORNER</small></span></a><button class="menu" onclick="toggleMenu()">☰</button><nav id="nav"><a href="{% url 'home' %}">Home</a><a href="{% url 'services' %}">Services</a><a href="{% url 'about' %}">About</a><a href="{% url 'contact' %}">Contact</a><a class="btn small" href="{% url 'book' %}">Book Now</a></nav></header>{% block content %}{% endblock %}<footer><div><a class="brand" href="{% url 'home' %}"><b>GC</b><span>THE GENTS'<small>CORNER</small></span></a><p>Modern barbering. Classic standards.</p></div><div><h4>VISIT</h4><p>12 Florida Road<br>Morningside, Durban<br>Mon–Sat · 09:00–18:00</p></div><div><h4>EXPLORE</h4><a href="{% url 'services' %}">Services</a><a href="{% url 'book' %}">Book</a><a href="{% url 'terms' %}">Terms</a></div><div><h4>FOLLOW</h4><a href="https://www.instagram.com/" target="_blank">Instagram</a><br><a href="https://www.facebook.com/" target="_blank">Facebook</a></div><div class="copy">© {% now "Y" %} The Gents' Corner Barber Co.</div></footer><script src="{% static 'js/site.js' %}"></script></body></html>
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}The Gents' Corner{% endblock %}</title>
+<meta name="description" content="Premium barbering in Durban. Book your next cut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+<div id="offer" class="offer">New guests get 10% off their first booking. <button onclick="closeOffer()">×</button></div>
+<header>
+<a class="brand" href="{% url 'home' %}"><b>GC</b><span>THE GENTS'<small>CORNER</small></span></a>
+<button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+<nav id="nav">
+<a href="{% url 'home' %}">Home</a><a href="{% url 'services' %}">Services</a><a href="{% url 'barbers' %}">Barbers</a><a href="{% url 'about' %}">About</a><a href="{% url 'contact' %}">Contact</a><a class="btn small" href="{% url 'book' %}">Book Now</a>
+</nav>
+</header>
+{% block content %}{% endblock %}
+<footer>
+<div><a class="brand" href="{% url 'home' %}"><b>GC</b><span>THE GENTS'<small>CORNER</small></span></a><p>Modern barbering. Classic standards.</p></div>
+<div><h4>VISIT</h4><p>12 Florida Road<br>Morningside, Durban<br>Mon–Sat · 09:00–18:00</p></div>
+<div><h4>EXPLORE</h4><a href="{% url 'services' %}">Services</a><a href="{% url 'barbers' %}">Barbers</a><a href="{% url 'book' %}">Book</a><a href="{% url 'terms' %}">Terms</a></div>
+<div><h4>FOLLOW</h4><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></div>
+<div class="copy">© {% now "Y" %} The Gents' Corner Barber Co.</div>
+</footer>
+<script src="{% static 'js/site.js' %}"></script>
+</body></html>
