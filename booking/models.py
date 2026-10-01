@@ -48,14 +48,34 @@ class Booking(models.Model):
         ]
 
     def clean(self):
-        if self.appointment_at.weekday() == 6:
-            raise ValidationError("The shop is closed on Sundays.")
-        if self.appointment_at.hour < 9 or self.appointment_at.hour >= 18:
-            raise ValidationError("Appointments are between 09:00 and 18:00.")
+        errors = {}
+
+        # Model validation can run even when the form has missing/invalid
+        # fields, so never call weekday() on a missing appointment.
+        if self.appointment_at is None:
+            errors["appointment_at"] = "Please choose an appointment date and time."
+        else:
+            if self.appointment_at.weekday() == 6:
+                errors["appointment_at"] = "The shop is closed on Sundays."
+            elif self.appointment_at.hour < 9 or self.appointment_at.hour >= 18:
+                errors["appointment_at"] = "Appointments are between 09:00 and 18:00."
+
+        if self.service is None:
+            errors["service"] = "Please choose a service."
+
+        if self.barber is None:
+            errors["barber"] = "Please choose a barber."
+
+        if errors:
+            raise ValidationError(errors)
 
     @property
     def end_at(self):
+        if self.appointment_at is None or self.service is None:
+            return self.appointment_at
         return self.appointment_at + timedelta(minutes=self.service.duration_minutes)
 
     def __str__(self):
+        if self.appointment_at is None:
+            return f"{self.customer_name} - Unscheduled appointment"
         return f"{self.customer_name} - {self.appointment_at:%Y-%m-%d %H:%M}"
